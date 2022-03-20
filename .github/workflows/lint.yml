@@ -21,6 +21,11 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v2
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+            node-version: 16
+
       - name: Install Node dependencies
       - run: npm ci
 
