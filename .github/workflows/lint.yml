@@ -3,7 +3,7 @@ name: Lint
     # feature/ci-linters included on this commit for testing
 on:
   push:
-    branches: [main, feature/ci-lint]
+    branches: [main]
   # Pull_request_target required for annotation fork commits
   pull_request_target:
     branches: [main]
@@ -24,7 +24,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-            node-version: 16
+          node-version: 16
 
       - name: Install Node dependencies
       - run: npm ci
