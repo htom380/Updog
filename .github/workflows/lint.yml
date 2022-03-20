@@ -1,0 +1,32 @@
+name: Lint
+
+    # feature/ci-linters included on this commit for testing
+on:
+  push:
+    branches: [main, feature/ci-lint]
+  # Pull_request_target required for annotation fork commits
+  pull_request_target:
+    branches: [main]
+
+permissions:
+  checks: write
+  contents: write
+
+jobs:
+  run-linters:
+    name: Run linters
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Install Node dependencies
+      - run: npm ci
+
+      - name: Run linters
+        uses: wearerequired/lint-action@v1
+        with:
+          eslint: true
+          eslint_extensions: js, jsx
+          prettier: true
